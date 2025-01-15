@@ -1,0 +1,50 @@
+from app import db
+from datetime import datetime
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    Personal_ID = db.Column(db.String(120), unique=True, nullable=True)
+    role = db.Column(db.Enum('host','customer', name = 'user_roles'), default = 'customer', nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+    password = db.Column(db.String(80), nullable=False)
+    properties = db.relationship('Property', backref='host', lazy=True)
+    bookings = db.relationship('Booking', backref='customer', lazy=True)
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+    
+class Property(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=True, nullable=False)
+    description = db.Column(db.String(120), unique=True, nullable=False)
+    address = db.Column(db.String(120), unique=True, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    host_id = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+    bookings = db.relationship('Booking', backref='property', lazy=True)
+
+    def __repr__(self):
+        return '<Property %r>' % self.name
+    
+    
+class Booking(db.Model):
+    __tablename__ = 'bookings'
+
+    booking_id = db.Column(db.Integer, primary_key=True)
+    property_id = db.Column(db.Integer, db.ForeignKey('properties.property_id'), nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    host_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)  # Add host_id
+    check_in_date = db.Column(db.Date, nullable=False)
+    check_out_date = db.Column(db.Date, nullable=False)
+    total_price = db.Column(db.Numeric(10, 2), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # Relationships
+    property = db.relationship('Property', backref='bookings', lazy=True)
+    customer = db.relationship('User', foreign_keys=[customer_id], backref='customer_bookings', lazy=True)
+    host = db.relationship('User', foreign_keys=[host_id], backref='host_bookings', lazy=True)
