@@ -1,7 +1,7 @@
 ### Database Design
 
 1. **Users Table**
-   - `id`: INT, Primary Key, Auto Increment
+   - `id`: INT, Primary Key
    - `username`: VARCHAR(50), Unique
    - `email`: VARCHAR(100), Unique
    - `password_hash`: VARCHAR(255)
@@ -9,7 +9,7 @@
    - `created_at`: TIMESTAMP, Default CURRENT_TIMESTAMP
 
 2. **Properties Table**
-   - `id`: INT, Primary Key, Auto Increment
+   - `id`: INT, Primary Key
    - `host_id`: INT, Foreign Key (references Users)
    - `description`: TEXT
    - `price_per_night`: DECIMAL(10, 2)
@@ -18,7 +18,7 @@
    - `created_at`: TIMESTAMP, Default CURRENT_TIMESTAMP
 
 3. **Bookings Table**
-   - `id`: INT, Primary Key, Auto Increment
+   - `id`: INT, Primary Key
    - `property_id`: INT, Foreign Key (references Properties)
    - `customer_id`: INT, Foreign Key (references Users)
    - `start_date`: DATE
