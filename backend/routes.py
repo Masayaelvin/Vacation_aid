@@ -17,7 +17,11 @@ def register():
     username = data.get('username')
     email = data.get('email')
     password = data.get('password')
-
+    #validate email
+    user = User.query.filter_by(email=email).first()
+    user2 = User.query.filter_by(user_name=username).first()
+    if user or user2:
+        return jsonify({'message':'This email/username is already taken try another one'})
     # Validate input data
     if not username or not email or not password:
         return jsonify({'message': 'Missing required fields'}), 400

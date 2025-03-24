@@ -6,7 +6,7 @@ class User(db.Model):
     """User model representing hosts and customers."""
     __tablename__ = 'users'
     user_id = db.Column(db.String(180), primary_key=True)
-
+    national_id = db.Column(db.Integer, unique = True)
     user_name = db.Column(db.String(100), nullable=False)
     profile_picture = db.Column(db.String(200), default='default.jpg')
     email = db.Column(db.String(150), unique=True, nullable=False)
