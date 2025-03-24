@@ -1,7 +1,4 @@
-from backend import app
-
-
-
+from bk_config import app
 if __name__ == '__main__':
     app.run(debug=True)
     
