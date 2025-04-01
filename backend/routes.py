@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, jsonify
 from models import User
-from bk_config import app, db, bcrypt
+import os
+from bk_config import app, db, bcrypt, limiter
 import uuid
 import jwt
 import datetime
@@ -18,10 +19,12 @@ def register():
     email = data.get('email')
     password = data.get('password')
     #validate email
-    user = User.query.filter_by(email=email).first()
-    user2 = User.query.filter_by(user_name=username).first()
-    if user or user2:
-        return jsonify({'message':'This email/username is already taken try another one'})
+    existing_user_email = User.query.filter_by(email=email).first()
+    existing_user_name = User.query.filter_by(user_name=username).first()
+    if existing_user_email:
+        return jsonify({'message':'This EMAIL is already taken try another one!'})
+    if existing_user_name:
+        return jsonify({'message':'This USERNAME is already taken try another one!'})
     # Validate input data
     if not username or not email or not password:
         return jsonify({'message': 'Missing required fields'}), 400
@@ -40,6 +43,7 @@ def register():
     return jsonify({'message': 'User registered successfully'}), 201
 
 @app.route('/login', methods=['POST'])
+@limiter.limit("5 per minute")  # Rate limit to prevent brute-force attacks
 def login():
     data = request.get_json()
     email = data.get('email')
@@ -53,11 +57,11 @@ def login():
     user = User.query.filter_by(email=email).first()
 
     if user and bcrypt.check_password_hash(user.password, password):
-        # Generate JWT token (no need to decode)
+        # Generate JWT token
         token = jwt.encode({
             'user_id': user.user_id,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
-        }, 'your_secret_key', algorithm='HS256').decode('utf-8')
+        }, os.getenv('SECRET_KEY'), algorithm='HS256').decode('utf-8')
 
         return jsonify({'token': token}), 200  # Return JSON response
     
@@ -78,7 +82,7 @@ def token_required(f):
             return jsonify({'message': 'Token is missing!'}), 401
 
         try:
-            data = jwt.decode(token, 'your_secret_key', algorithms=['HS256'])
+            data = jwt.decode(token, os.getenv('SECRET_KEY'), algorithms=['HS256'])
             current_user = User.query.filter_by(user_id=data['user_id']).first()
         except jwt.ExpiredSignatureError:
             return jsonify({'message': 'Token has expired!'}), 401
@@ -88,4 +92,3 @@ def token_required(f):
         return f(current_user, *args, **kwargs)
 
     return decorated
-
