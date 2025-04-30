@@ -10,9 +10,9 @@ body {
     align-items: center;
     padding: 20px;
     position: fixed;
-    width: 95%;
+    width: 98%;
     background: transparent;
-    transition: background 0.3s;
+    transition: background 0.3s ease-in-out;
 }
 
 .navbar.scrolled {
@@ -26,10 +26,12 @@ body {
 .vacation {
     color: white;
     transition: color 0.3s;
+    font-weight: 300;
 }
 
 .aid {
     color: #FF9A76;
+    font-weight: 300;
 }
 
 .nav-links {
@@ -83,6 +85,7 @@ body {
 .search-field {
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
 }
 
 .search-field label {
@@ -102,4 +105,68 @@ body {
     color: white;
     cursor: pointer;
     border-radius: 5px;
+}
+
+
+/* Host CTA Section */
+.host-cta {
+    background: #FF9A76;
+    padding: 60px 0;
+    color: white;
+}
+
+.host-cta h2 {
+    margin-bottom: 20px;
+}
+
+.host-cta .btn {
+    background: white;
+    color: #FF9A76;
+    transition: transform 0.2s;
+}
+
+.host-cta .btn:hover {
+    transform: scale(1.05);
+}
+
+/* why choose us styling */
+.why-choose-us {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.why-choose-us h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+.why-choose-us p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.feature {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feature img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 14px;
+    color: #666;
 }
