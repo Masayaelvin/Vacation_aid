@@ -298,7 +298,7 @@ body {
 /* Host CTA Section */
 .host-cta {
   position: relative;
-  background: url('your-background-image.jpg') center center/cover no-repeat;
+  background: url('host-cta.jpg') center center/cover no-repeat;
   height: 80vh;
   display: flex;
   align-items: center;
