@@ -1,0 +1,417 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f8f8f8;
+}
+
+/* Navbar */
+.navbar {
+    transition: all 0.4s ease-in-out;
+}
+
+.navbar.scrolled {
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+
+}
+
+.vacation {
+    color: white;
+    transition: color 0.3s;
+}
+
+.aid {
+    color: #FF9A76;
+}
+
+.navbar.scrolled .vacation {
+    color: #6FB1FC;
+}
+
+.navbar-nav .nav-link {
+    transition: color 0.3s ease-in-out;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #6FB1FC;
+}
+.navbar.scrolled .nav-link {
+    color: black;
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+}
+.navbar .buttons .btn {
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.3s;
+}
+.navbar .buttons .btn:hover {
+    transform: scale(1.05);
+    background-color: #6FB1FC;
+}
+.navbar .buttons .btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+/* Hero Section */
+.hero {
+    background: url('hero-image.jpg') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.search-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.search-bar input, .search-bar button {
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #FF9A76;
+    width: 200px;
+    font-size: 16px;
+}
+
+.search-btn {
+    background: #FF9A76;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Featured Listings */
+.popular-destinations {
+    padding: 40px 20px; /* Adjust vertical padding and add horizontal padding */
+    background-color: #f9f9f9; /* Light grey background */
+}
+
+.container {
+    max-width: 1200px; /* Standard container width */
+    margin: 0 auto;
+    padding: 0 15px; /* Add some padding on the sides */
+}
+
+.section-title {
+    font-size: 24px; /* Adjust font size */
+    color: #333; /* Darker text color */
+    text-align: center;
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.section-subtitle {
+    color: #777; /* Lighter text color */
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 30px; /* Increased margin */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px; /* Adjust for container padding */
+    margin-right: -15px; /* Adjust for container padding */
+    justify-content: center; /* Center the cards */
+}
+
+.col-md-4 {
+    width: calc(33.333% - 30px); /* Adjust width for spacing */
+    margin-bottom: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.destination-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.destination-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* Slightly stronger shadow on hover */
+}
+
+.image-container {
+    position: relative; /* For potential overlay elements */
+}
+
+.destination-card img {
+    display: block;
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover; /* Ensure image covers the container */
+    aspect-ratio: 16 / 9; /* Maintain a consistent aspect ratio similar to the design */
+}
+
+.info-container {
+    padding: 15px;
+    text-align: left; /* Align text to the left */
+}
+
+.info-container h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.info-container .location {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.info-container .description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4; /* Improve readability */
+}
+
+.info-container .details {
+    display: flex;
+    justify-content: space-between; /* Space price and rating */
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+.info-container .price {
+    font-weight: bold;
+    color: #FF9A76; /* Example primary color */
+}
+
+.info-container .rating {
+    color: #ffc107; /* Example star color */
+}
+
+.view-details-link {
+    display: inline-block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.view-details-link:hover {
+    background-color: #FF9A76;
+    color: #fff;
+}
+
+.view-all-button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.view-all-button {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #28a745; /* Example success color */
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.view-all-button:hover {
+    background-color: #218838;
+}
+
+/* Responsive adjustments (if needed) */
+/* @media (max-width: 992px) {
+    .col-md-4 {
+        width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        width: 100%;
+    }
+} */
+
+/* Why Choose Us */
+.why-choose-us {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.feature {
+    border-radius: 10px;
+    background: white;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.feature:hover {
+    transform: scale(1.05);
+}
+
+.feature i {
+    color: #FF9A76;
+    margin-bottom: 15px;
+}
+
+/* Host CTA Section */
+.host-cta {
+  position: relative;
+  background: url('host-cta.jpg') center center/cover no-repeat;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.host-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 1;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta-content .btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #ff7f50; /* Coral/Orange button color */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.cta-content .btn:hover {
+  background-color: #ff5722; /* Slightly darker on hover */
+}
+
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+}
+
+.footer h3, .footer h4 {
+    color: #FF9A76;
+}
+
+.footer p, .footer ul {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 8px;
+}
+
+.footer ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer ul li a:hover {
+    color: white;
+}
+
+.social-icons a {
+    margin-right: 12px;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        margin-bottom: 20px;
+    }
+}
