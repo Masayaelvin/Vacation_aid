@@ -33,3 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+function switchForm(formType) {
+    document.getElementById("signup-form").classList.toggle("hidden", formType !== "signup");
+    document.getElementById("login-form").classList.toggle("hidden", formType !== "login");
+
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.textContent.toLowerCase() === formType);
+    });
+}
+
